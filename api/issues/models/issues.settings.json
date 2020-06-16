@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "issues",
+  "info": {
+    "name": "issues"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "assignee": {
+      "model": "team"
+    },
+    "reporter": {
+      "model": "team"
+    },
+    "label": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string"
+    },
+    "issue_status": {
+      "type": "string",
+      "default": "todo"
+    },
+    "email": {
+      "type": "email"
+    },
+    "mobile": {
+      "type": "string"
+    }
+  }
+}
