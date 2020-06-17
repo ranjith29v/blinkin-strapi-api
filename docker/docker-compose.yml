@@ -1,10 +1,11 @@
-version: "3"
+version: '3'
 services:
-  strapi:
-    image: strapi:1.0.0
-    container_name: strapi
-    restart: always
-    ports:
-      - "1337:1337"
-    volumes:
-      - "./blinkin-strapi-api:/app"
+        strapi:
+                image:docker-registry.blinkin.io/strapi-development:v1
+
+                container_name: strapi
+                restart: always
+                ports:
+                        - "1337:1337"
+                volumes:
+                        - "./blinkin-strapi-api:/app"

@@ -8,9 +8,6 @@ def dockerRegistry='docker-registry.blinkin.io'
     stage ('Checkout'){
         checkout scm
     }
-  
-  if (env.BRANCH_NAME == 'master')
-{
  
     stage ('Build and Push Docker Image')
       {
@@ -36,7 +33,7 @@ withCredentials( [sshUserPrivateKey( credentialsId: 'blinkin-strapi', keyFileVar
     sshCommand remote: remote, command: "docker-compose -f $webPath/docker-compose.yml down; sleep 5; docker-compose -f $webPath/docker-compose.yml up -d ; docker ps"
   }
 }
-}
+ 
 }
  
 def Properties getProperties(filename) {
