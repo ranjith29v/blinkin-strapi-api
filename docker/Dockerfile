@@ -4,7 +4,7 @@ MAINTAINER Subu
 
 WORKDIR /app
 
-COPY ./blinkin-strapi-api /app
+COPY ../* /app
 
 RUN npm install pg
 
