@@ -4,7 +4,7 @@ MAINTAINER Subu
 
 WORKDIR /app
 
-COPY ../* /app
+COPY ../../strapi-development/ /app
 
 RUN npm install pg
 
