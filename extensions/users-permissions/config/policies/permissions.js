@@ -65,7 +65,7 @@ module.exports = async (ctx, next) => {
     const store = await strapi.store({
       environment: "",
       type: "plugin",
-      name: "users-permissions"
+      name: "users-permissions",
     });
 
     if (
@@ -104,7 +104,7 @@ module.exports = async (ctx, next) => {
         type: route.plugin || "application",
         controller: route.controller,
         action: route.action,
-        enabled: true
+        enabled: true,
       },
       []
     );
