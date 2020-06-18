@@ -19,16 +19,16 @@ node {
 {
     stage('Pull and Deploy Docker Image')
   {
-      sh 'scp -i ${SSH_KEY} ./docker/docker-compose.yml ${USERNAME}@15.206.226.142:/home/ubuntu'
+      sh 'scp -i ${SSH_KEY} ./docker/docker-compose.yml ${USERNAME}@15.206.226.142:/home/docker'
       sh '''
           ssh -i ${SSH_KEY} ${USERNAME}@15.206.226.142
-          mv /home/ubuntu/docker/strapi/docker-compose.yml /home/ubuntu/docker/strapi/docker-compose.yml_bkp
-          mv /home/ubuntu/docker-compose.yml /home/ubuntu/docker/strapi/docker-compose.yml
+          mv /home/docker/strapi/docker-compose.yml /home/docker/strapi/docker-compose.yml_bkp
+          mv /home/docker-compose.yml /home/docker/strapi/docker-compose.yml
           docker pull docker-registry.blinkin.io/strapi-development:v1
           docker images
-          docker-compose -f /home/ubuntu/docker/strapi/docker-compose.yml down
+          docker-compose -f /home/docker/strapi/docker-compose.yml down
           sleep 5
-          docker-compose -f /home/ubuntu/docker/strapi/docker-compose.yml up -d
+          docker-compose -f /home/docker/strapi/docker-compose.yml up -d
           docker ps
           exit'''
   }
