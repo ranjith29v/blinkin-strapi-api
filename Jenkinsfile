@@ -28,7 +28,7 @@ node {
 
       stage('Pull and Deploy Docker Image')
   {
-        sshCommand remote: remote, command: "docker login -u=blinkin -p=$PASSWORD ${dockerRegistry}; docker pull ${dockerRegistry}/strapi-development:v1; docker images"
+        sshCommand remote: remote, command: "docker login -u=blinkin -p=C9NV6NRHmjxYWygac862kv7EYKRL ${dockerRegistry}; docker pull ${dockerRegistry}/strapi-development:v1; docker images"
         sshPut remote: remote, from: './docker/docker-compose.yml', into: "${webPath}"
         sshCommand remote: remote, command: "docker-compose -f ${webPath}/docker-compose.yml down; sleep 5; docker-compose -f ${webPath}/docker-compose.yml up -d ; docker ps"
   }
