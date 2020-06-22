@@ -22,6 +22,7 @@ module.exports = async (ctx, next) => {
           .findOne({ id }, ["role"]);
       }
     } catch (err) {
+      // try with our session token
       try {
         const val = await strapi.plugins[
           "users-permissions"
