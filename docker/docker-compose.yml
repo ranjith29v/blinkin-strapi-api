@@ -6,5 +6,3 @@ services:
     restart: always
     ports:
       - "1337:1337"
-    volumes:
-      - "./blinkin-strapi-api:/app"
