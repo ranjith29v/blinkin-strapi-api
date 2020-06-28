@@ -36,6 +36,9 @@
     },
     "mobile": {
       "type": "string"
+    },
+    "crm_ticket_id": {
+      "type": "string"
     }
   }
 }
