@@ -39,6 +39,9 @@
     },
     "crm_ticket_id": {
       "type": "string"
+    },
+    "company_name": {
+      "type": "string"
     }
   }
 }
