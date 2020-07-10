@@ -15,12 +15,6 @@
     "description": {
       "type": "richtext"
     },
-    "assignee": {
-      "model": "team"
-    },
-    "reporter": {
-      "model": "team"
-    },
     "label": {
       "type": "string"
     },
@@ -41,6 +35,12 @@
       "type": "string"
     },
     "company_name": {
+      "type": "string"
+    },
+    "assignee": {
+      "type": "string"
+    },
+    "reporter": {
       "type": "string"
     }
   }
