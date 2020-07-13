@@ -34,14 +34,14 @@
     "crm_ticket_id": {
       "type": "string"
     },
-    "company_name": {
-      "type": "string"
-    },
     "assignee": {
       "type": "string"
     },
     "reporter": {
       "type": "string"
+    },
+    "company_name": {
+      "type": "integer"
     }
   }
 }
