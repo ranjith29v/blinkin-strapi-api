@@ -7,14 +7,13 @@ var jwt_secreat = require("../../../extensions/users-permissions/config/jwt");
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
  * to customize this controller
  */
-let token =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1OSwibmFtZSI6IlJhbmppdGgiLCJlbWFpbCI6InJhbmppdGgudkBibGlua2luLmlvIiwiY29tcGFueV9pZCI6MSwibGFzdF9sb2dpbl9hdCI6IjIwMjAtMDYtMTIgMDc6MzA6MDYiLCJzZXNzaW9uX2lkIjoiYWVKenZHWWtTRUFnRGpvWFRMUndRcjlwUHVDdkpUcTNRS0d4bml5ZGJQNUN5bHRnSmNRYWZ6eXVGUVhMIiwiY291bnRyeSI6IklOIiwiZXhwaXJ5IjoxNTkzMTU2NjA2LCJpc19jb21wYW55X2FkbWluIjp0cnVlfQ.cMK7BPyvQeCxPyelTAlzR1L7btmCdcI4zky5tKy9neE";
-
-function authticate(token) {}
 
 module.exports = {
   async find(ctx) {
-    console.log(ctx.request);
+    const { company_id } = await strapi.plugins[
+      "users-permissions"
+    ].services.jwt.getToken(ctx);
+    ctx.query["company_name"] = company_id;
     let entities;
     if (ctx.query._q) {
       entities = await strapi.services.issues.search(ctx.query);
@@ -22,9 +21,20 @@ module.exports = {
       entities = await strapi.services.issues.find(ctx.query);
     }
 
-    return entities.map(entity =>
+    return entities.map((entity) =>
       sanitizeEntity(entity, { model: strapi.models.issues })
     );
-    // return await strapi.services.issues.find(ctx.query);
-  }
+  },
+};
+
+module.exports = {
+  async create(ctx) {
+    const { company_id } = await strapi.plugins[
+      "users-permissions"
+    ].services.jwt.getToken(ctx);
+    ctx.request.body["company_name"] = company_id;
+    let entity;
+    entity = await strapi.services.issues.create(ctx.request.body);
+    return sanitizeEntity(entity, { model: strapi.models.issues });
+  },
 };
