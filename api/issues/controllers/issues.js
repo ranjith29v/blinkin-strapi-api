@@ -1,7 +1,7 @@
 "use strict";
 const { sanitizeEntity } = require("strapi-utils");
-var jwt = require("jsonwebtoken");
-var jwt_secreat = require("../../../extensions/users-permissions/config/jwt");
+// var jwt = require("jsonwebtoken");
+// var jwt_secreat = require("../../../extensions/users-permissions/config/jwt");
 
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
@@ -14,7 +14,6 @@ module.exports = {
       "users-permissions"
     ].services.jwt.getToken(ctx);
     ctx.query["company_name"] = company_id;
-
     let entities;
     if (ctx.query._q) {
       entities = await strapi.services.issues.search(ctx.query);
@@ -26,9 +25,6 @@ module.exports = {
       sanitizeEntity(entity, { model: strapi.models.issues })
     );
   },
-};
-
-module.exports = {
   async create(ctx) {
     const { company_id } = await strapi.plugins[
       "users-permissions"
