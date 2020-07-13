@@ -16,13 +16,13 @@
       "type": "richtext"
     },
     "label": {
-      "type": "string"
+      "type": "text"
     },
     "priority": {
-      "type": "string"
+      "type": "text"
     },
     "issue_status": {
-      "type": "string",
+      "type": "text",
       "default": "todo"
     },
     "email": {
@@ -38,7 +38,7 @@
       "type": "string"
     },
     "reporter": {
-      "type": "string"
+      "type": "text"
     },
     "company_name": {
       "type": "integer"
