@@ -14,6 +14,7 @@ module.exports = {
       "users-permissions"
     ].services.jwt.getToken(ctx);
     ctx.query["company_name"] = company_id;
+
     let entities;
     if (ctx.query._q) {
       entities = await strapi.services.issues.search(ctx.query);
