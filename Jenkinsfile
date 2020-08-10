@@ -32,11 +32,12 @@ node {
         sshPut remote: remote, from: './docker/docker-compose.yml', into: "${webPath}"
         sshCommand remote: remote, command: "docker-compose -f ${webPath}/docker-compose.yml down; sleep 5; docker-compose -f $webPath/docker-compose.yml up -d ; docker ps"
         }
+
     }
 
     stage('Publish to S3')
     {
-      dir('/var/lib/jenkins/workspace/strapi-deployment')
+      dir('/var/lib/jenkins/workspace')
       {
         withAWS(region: 'ap-south-1', credentials: '7f46d09d-d524-4c76-a969-bc7100f278f7')
            {
